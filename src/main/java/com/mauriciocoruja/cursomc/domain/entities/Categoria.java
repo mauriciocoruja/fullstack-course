@@ -1,4 +1,4 @@
-package com.mauriciocoruja.cursomc.entities;
+package com.mauriciocoruja.cursomc.domain.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
