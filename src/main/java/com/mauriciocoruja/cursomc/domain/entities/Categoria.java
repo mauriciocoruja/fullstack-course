@@ -1,5 +1,7 @@
 package com.mauriciocoruja.cursomc.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,16 +20,16 @@ public class Categoria implements Serializable {
     @ManyToMany(mappedBy = "categorias")
     private Set<Produto> produtos = new HashSet<>();
 
-    public Set<Produto> getProdutos() {
-        return produtos;
-    }
-
     public Categoria() {
     }
 
     public Categoria(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    public Set<Produto> getProdutos() {
+        return produtos;
     }
 
     public Integer getId() {

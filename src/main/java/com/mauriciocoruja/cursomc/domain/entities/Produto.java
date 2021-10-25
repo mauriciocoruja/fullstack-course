@@ -1,5 +1,7 @@
 package com.mauriciocoruja.cursomc.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,13 +17,14 @@ public class Produto {
     private String nome;
     private Double preco;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
     private Set<Categoria> categorias = new HashSet<>();
 
+    @JsonIgnore
     public Set<Categoria> getCategorias() {
         return categorias;
     }
