@@ -1,11 +1,11 @@
 package com.mauriciocoruja.cursomc.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+@Table(name = "tb_categoria")
 @Entity
 public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -15,7 +15,12 @@ public class Categoria implements Serializable {
     private Integer id;
     private String nome;
 
-    //private Set<Produto> produtos = new HashSet<>();
+    @ManyToMany(mappedBy = "categorias")
+    private Set<Produto> produtos = new HashSet<>();
+
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
 
     public Categoria() {
     }
